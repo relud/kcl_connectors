@@ -1,0 +1,8 @@
+*.pyc
+*.swp
+*.swo
+/bin
+/lib
+/lib64
+/include
+/venv
