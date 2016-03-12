@@ -1,22 +1,16 @@
 #!/usr/bin/env python
-from amazon_kclpy import kcl
-import json, base64, os
+from amazon_kclpy.kcl import KCLProcess
+from kcl_heka_connectors import base
+from os import getenv
 
-class RecordProcessor(kcl.RecordProcessorBase):
+class RecordProcessor(base.RecordProcessor):
     # file where logs are written
-    file_buffer = open(os.getenv('FILE_BUFFER'), 'a')
+    file_buffer = open(getenv('FILE_BUFFER'), 'a')
 
-    def initialize(self, shard_id):
-        pass
-
-    def process_records(self, records, checkpointer):
-        for record in records:
-            self.file_buffer.write(base64.b64decode(record['data']))
-            self.file_buffer.flush()
-
-    def shutdown(self, checkpointer, reason):
-        pass
+    def process_record(self, data, partition_key, sequence_number):
+        self.file_buffer.write(data)
+        self.file_buffer.flush()
 
 if __name__ == "__main__":
-    kclprocess = kcl.KCLProcess(RecordProcessor())
+    kclprocess = KCLProcess(RecordProcessor())
     kclprocess.run()
