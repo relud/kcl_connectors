@@ -11,5 +11,5 @@ ENV CONNECTOR=file_buffer \
     REGION_NAME=us-east-1 \
     STREAM_NAME=mystream \
     APPLICATION_NAME=mystream-group1 \
-    FILE_BUFFER=/dev/stdout
+    FILE_BUFFER=/app/stream.log
 CMD run.sh
