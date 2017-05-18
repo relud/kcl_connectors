@@ -54,7 +54,11 @@ class RecordProcessor(kcl.RecordProcessorBase):
                 self.checkpoint(checkpointer, str(self.largest_seq))
                 self.last_checkpoint_time = time()
         except Exception as e:
+            # catch the exception, checkpoint, and refuse to continue
             stderr.write("Error processing records: %s\n" % e)
+            self.checkpoint(checkpointer, str(self.largest_seq))
+            self.last_checkpoint_time = time()
+            exit(1)
 
     def shutdown(self, checkpointer, reason):
         try:

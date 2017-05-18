@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from amazon_kclpy.kcl import KCLProcess
-from kcl_heka_connectors import base
+from kcl_connectors import base
 from os import getenv
 import socket
 

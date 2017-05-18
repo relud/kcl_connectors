@@ -4,7 +4,7 @@
 cat > kcl.properties << EOF
 AWSCredentialsProvider = DefaultAWSCredentialsProviderChain
 applicationName = $APPLICATION_NAME
-executableName = python -m kcl_heka_connectors.$CONNECTOR
+executableName = python -m kcl_connectors.$CONNECTOR
 processingLanguage = python/2.7
 regionName = $REGION_NAME
 streamName = $STREAM_NAME
