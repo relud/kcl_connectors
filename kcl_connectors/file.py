@@ -17,7 +17,7 @@ class RecordProcessor(base.RecordProcessor):
             self.fp.close()
             self.fp = open(getenv('FILE'), 'a')
             self.fp_opened = datetime.now()
-        self.fp.write(data)
+        self.fp.write(data + "\n")
         self.fp.flush()
 
 if __name__ == "__main__":
