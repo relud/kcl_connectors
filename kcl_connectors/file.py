@@ -13,7 +13,7 @@ class RecordProcessor(base.RecordProcessor):
     fp_ino = None
 
     def process_record(self, data, partition_key, sequence_number):
-        if self.fp is None or self.fp_ino != stat(self.fname).st_ino
+        if self.fp is None or self.fp_ino != stat(self.fname).st_ino:
             if self.fp is not None:
                 self.fp.close()
             self.fp = open(self.fname, 'a')
