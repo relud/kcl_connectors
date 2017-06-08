@@ -17,7 +17,7 @@ class RecordProcessor(base.RecordProcessor):
         base.RecordProcessor.initialize(self, shard_id)
         self.sock.connect(self.address)
 
-    def process_record(self, data, partition_key, sequence_number):
+    def process_record(self, data, partition_key, sequence_number, sub_sequence_number):
         self.sock.sendall(data)
 
     def shutdown(self, checkpointer, reason):
