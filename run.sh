@@ -8,7 +8,7 @@ executableName = python -m kcl_connectors.$CONNECTOR
 processingLanguage = python/2.7
 regionName = $REGION_NAME
 streamName = $STREAM_NAME
-initialPositionInStream = TRIM_HORIZON
+initialPositionInStream = $DEFAULT_INITAL_POSITION_IN_STREAM
 EOF
 
 # ask kclpy helper to tell us what command to run
