@@ -18,7 +18,9 @@ class RecordProcessor(base.RecordProcessor):
                 self.fp.close()
             self.fp = open(self.fname, 'a')
             self.fp_ino = fstat(self.fp.fileno()).st_ino
-        self.fp.write(data + "\n")
+        if data[-1] != '\n':
+            data += '\n'
+        self.fp.write(data)
         self.fp.flush()
 
 if __name__ == "__main__":
