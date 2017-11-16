@@ -18,7 +18,7 @@ class RecordProcessor(base.RecordProcessor):
                 self.fp.close()
             self.fp = open(self.fname, 'a')
             self.fp_ino = fstat(self.fp.fileno()).st_ino
-        if data[-1] != '\n':
+        if not data or data[-1] != '\n':
             data += '\n'
         self.fp.write(data)
         self.fp.flush()
